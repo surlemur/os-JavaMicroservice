@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/user/.m2/repository/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/user/.m2/repository/com/sun/jersey/jersey-core/1.19.3/jersey-core-1.19.3.jar"/>
+	<classpathentry kind="lib" path="/home/user/.m2/repository/com/sun/jersey/jersey-server/1.19.3/jersey-server-1.19.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
