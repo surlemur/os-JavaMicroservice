@@ -15,7 +15,7 @@
 
 	<build>
 		<plugins>
-			<plugin>
+			<!--plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.0.2</version>
@@ -23,23 +23,30 @@
 					<archive>
 						<manifest>
 							<mainClass>com.zuehlke.doa.MyMain</mainClass>
-							<addClasspath>true</addClasspath>
-							<classpathPrefix>dependency/</classpathPrefix>
+							<addClasspath>true</addClasspath> <classpathPrefix>dependency/</classpathPrefix>
 						</manifest>
-						
 					</archive>
 				</configuration>
-			</plugin>
+			</plugin-->
+
+			<!-- plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-assembly-plugin</artifactId> 
+				<version>3.0.0</version> <configuration> <descriptorRefs> <descriptorRef>jar-with-dependencies</descriptorRef> 
+				</descriptorRefs> <archive> <manifest> <mainClass>com.zuehlke.doa.MyMain</mainClass> 
+				</manifest> </archive> </configuration> <executions> <execution> <id>make-assembly</id> 
+				<phase>package</phase> <goals> <goal>single</goal> </goals> </execution> 
+				</executions> </plugin -->
+
+
 		</plugins>
 	</build>
 
 	<profiles>
-		<profile>
+		<!-->profile>
 			<id>openshift</id>
 			<properties>
 				<docker.env.Main>com.zuehlke.doa.MyMain</docker.env.Main>
 			</properties>
-		</profile>
+		</profile-->
 	</profiles>
 
 	<dependencies>
