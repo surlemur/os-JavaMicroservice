@@ -5,5 +5,7 @@
 	<classpathentry kind="lib" path="/home/user/.m2/repository/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar"/>
 	<classpathentry kind="lib" path="/home/user/.m2/repository/com/sun/jersey/jersey-core/1.19.3/jersey-core-1.19.3.jar"/>
 	<classpathentry kind="lib" path="/home/user/.m2/repository/com/sun/jersey/jersey-server/1.19.3/jersey-server-1.19.3.jar"/>
+	<classpathentry kind="lib" path="/home/user/.m2/repository/org/slf4j/jul-to-slf4j/1.7.25/jul-to-slf4j-1.7.25.jar"/>
+	<classpathentry kind="lib" path="/home/user/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

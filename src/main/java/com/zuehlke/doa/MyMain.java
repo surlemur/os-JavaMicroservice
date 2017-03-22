@@ -3,26 +3,42 @@ package com.zuehlke.doa;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.URI;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
 
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.ext.RuntimeDelegate;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 public class MyMain {
 
+    private static Logger LOG = LoggerFactory.getLogger(MyMain.class);
+
     public static void main(String[] args) throws IOException, InterruptedException {
-        System.out.println("Starting server...");
-        System.out.println("DB_URL=" + System.getenv("DB_URL"));
+        initLogging();
+
+        LOG.info("Starting server...");
+        LOG.info("DB_URL=" + System.getenv("DB_URL"));
 
         startServer();
 
-        System.out.println("Server started");
-        System.out.println("Internal URI is " + getBaseURI() + "myResource");
-        System.out.println("To find out exposed port, do a 'docker ps'");
+        LOG.info("Server started");
+        LOG.debug("Internal URI is " + getBaseURI() + "myResource");
 
         Thread.currentThread().join();
+    }
+
+    private static void initLogging() {
+        LogManager.getLogManager().reset();
+        SLF4JBridgeHandler.removeHandlersForRootLogger();
+        SLF4JBridgeHandler.install();
+        java.util.logging.Logger.getLogger("global").setLevel(Level.FINEST);
     }
 
     private static void startServer() throws IOException {
