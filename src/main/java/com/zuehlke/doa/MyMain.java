@@ -29,7 +29,7 @@ public class MyMain {
         startServer();
 
         LOG.info("Server started");
-        LOG.debug("Internal URI is " + getBaseURI() + "myResource");
+        LOG.debug("Internal URI for time resource is " + getBaseURI() + "time");
 
         Thread.currentThread().join();
     }

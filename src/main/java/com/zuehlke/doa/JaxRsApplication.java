@@ -12,7 +12,8 @@ public class JaxRsApplication extends Application {
 
     public JaxRsApplication() {
         HashSet<Class<?>> c = new HashSet<Class<?>>();
-        c.add(MyResource.class);
+        c.add(TimeResource.class);
+        c.add(RootResource.class);
         classes = Collections.unmodifiableSet(c);
     }
 
