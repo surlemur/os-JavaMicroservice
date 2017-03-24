@@ -1,0 +1,36 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+compileJava.options.encoding = 'UTF-8'
+
+mainClassName = 'com.zuehlke.doa.MyMain'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile 'com.sun.jersey:jersey-server:1.19.3'
+  // compile 'org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.24'
+  
+  compile 'org.slf4j:slf4j-api:1.7.25'
+  compile 'org.slf4j:jul-to-slf4j:1.7.25'
+  runtime 'ch.qos.logback:logback-classic:1.2.2'
+}
+
+def dockerProjectName = project.name.toLowerCase()
+
+task(distDocker, type: Exec, dependsOn: distTar) {
+  description 'Bundles the project as a Docker image.'
+  group 'Distribution'
+  commandLine 'docker', 'build', '--build-arg', 'projectName=' + project.name, '-t', dockerProjectName, projectDir
+}
+
+task(runDocker, type: Exec, dependsOn: distDocker) {
+  description 'Runs this project as a Docker image'
+  group 'Application'
+  commandLine 'docker', 'run', '-p', '8080', '--rm', '--env-file', 'service.test.env', dockerProjectName
+}
