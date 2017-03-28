@@ -2,6 +2,9 @@ apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
 
+group = 'com.zuehlke.doa'
+version = '0.1.0'
+
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 compileJava.options.encoding = 'UTF-8'
@@ -26,7 +29,7 @@ def dockerProjectName = project.name.toLowerCase()
 task(distDocker, type: Exec, dependsOn: distTar) {
   description 'Bundles the project as a Docker image.'
   group 'Distribution'
-  commandLine 'docker', 'build', '--build-arg', 'projectName=' + project.name, '-t', dockerProjectName, projectDir
+  commandLine 'docker', 'build', '--build-arg', 'projectName=' + project.name, '--build-arg', 'projectVersion=' + project.version, '-t', dockerProjectName, projectDir
 }
 
 task(runDocker, type: Exec, dependsOn: distDocker) {
